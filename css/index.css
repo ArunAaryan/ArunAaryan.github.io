@@ -1,0 +1,45 @@
+      
+      a{
+        color: white;
+      }
+      p{
+        color:white;
+        font-family: 'Manrope', sans-serif;
+      }
+      span{
+        color:white;
+      }
+      li{
+        list-style-type: none;
+        color:white;
+        font-family: 'Manrope', sans-serif;
+      }
+      hr{
+        color:white;
+      }
+      #heading-name{
+        font-family: 'karla', sans-serif;
+        font-size:2.8rem;
+      }
+      #heading-name1{
+        font-family: 'karla', sans-serif;
+        font-size:2.3rem;
+      }
+      #max-text{
+        font-family: 'Manrope', sans-serif;
+        
+      }
+      #ico{
+        width: auto;
+        display:inline-block;
+        margin-right:2rem;
+      }
+      table{
+        background-color:red;
+      }
+      hr{
+        color:white;
+        background-color: white;
+        border:none;
+      }
+    </style>
