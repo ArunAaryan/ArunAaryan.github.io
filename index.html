@@ -98,6 +98,7 @@
             fetch('https://uprightmidnightbluelaboratory.arunaaryan.repl.co/nbio').then(function (res){
               res.json().then(data=>{
                 console.log(data.nbio)
+                // if !data.nbio
                 document.getElementById("max-text").innerHTML= data.nbio;
               })
             })
