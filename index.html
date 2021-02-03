@@ -1,9 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>This is Title Page</title>
+    <body>
+      <div
+        class="container"
+        style="padding-top: 2rem; padding-bottom: 2rem; max-width: 40rem"
+      >
+        <!-- photo and bio -->
+        <div class="row">
+          <!-- photo div -->
+          <div class="col-sm" style="padding-bottom: 2rem; margin: 0 auto">
+            <img
+              class="rounded-circle mx-auto d-block"
+              src="/images/arunprofile.jpg"
+              height="250px"
+              width="250px"
+              id="imagepro"
+              style="transition: 0.6s"
+            />
+          </div>
+
+          <!-- my name and bio div -->
+          <div class="col-sm">
+            <span class="h4" id="heading-name" style="color: rgb(82, 147, 245)"
+              >Arun Kumar B</span
+            >
+            <p class="small">Hyderabad</p>
+
+            <hr />
+            <p id="max-text" style="max-width: 40rem; min-width: 20rem">
+              <%=bio%>
+            </p>
+          </div>
+        </div>
+
+        <!-- end of first row -->
+
+        <!-- skills and education -->
+        <div class="row">
+          <!-- skills -->
+          <div class="col-sm" style="max-width: 18rem">
+            <hr />
+            <p id="heading-name1" style="color: rgb(82, 147, 245)">Skills</p>
+            <span></span>
+            <ul class="list-group">
+              <% skills.forEach((skill)=>{ %>
+              <li>=> <%= skill %></li>
+              <% })%>
+            </ul>
+          </div>
+
+          <!-- education -->
+          <div class="col-sm" style="max-width: 30rem; min-width: 20rem">
+            <hr />
+            <p id="heading-name1" style="color: rgb(82, 147, 245)">Education</p>
+            <table class="table table-dark">
+              <tr>
+                <td>
+                  <p>Chaitanya Bharathi Institute Of Technology, Gandipet</p>
+                </td>
+                <td>
+                  <p>Master of Computer Applications.</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <p>Bhavans Vivekananda Degree College.</p>
+                </td>
+                <td>
+                  <p>Bachelor of Computer Applications.</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- contact and github -->
+
+        <div class="page-footer text-center col-sm" style="padding-top: 2rem">
+          <ul>
+            <li id="ico">
+              <i
+                class="fa fa-phone fa-2x"
+                aria-hidden="true"
+                style="color: white"
+              ></i>
+            </li>
+            <li id="ico">
+              <a href="https://github.com/arunaaryan"
+                ><i
+                  class="fa fa-github fa-2x"
+                  aria-hidden="true"
+                  style="color: white"
+                ></i
+              ></a>
+            </li>
+            <li id="ico">
+              <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i>
+            </li>
+            <li id="ico">
+              <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <script>
+        window.onscroll = function () {
+          scrollFunction();
+        };
+
+        function scrollFunction() {
+          if (
+            document.body.scrollTop > 50 ||
+            document.documentElement.scrollTop > 50
+          ) {
+            document.getElementById("imagepro").style.height = "100px";
+            document.getElementById("imagepro").style.width = "100px";
+          } else {
+            document.getElementById("imagepro").style.height = "250px";
+            document.getElementById("imagepro").style.width = "250px";
+          }
+        }
+      </script>
+
+      <!-- style="color:rgb(247, 230, 85)" -->
+      <!-- style="color: rgb(241, 134, 72);" -->
+    </body>
   </head>
-  <body></body>
 </html>
