@@ -31,10 +31,16 @@ function App() {
         setDark(false);
       }
     }
-    console.log(process.env.url);
-    // fetch(process.env.url);
+    console.log(process.env.REACT_APP_URL);
+    fetch(process.env.REACT_APP_URL)
+      .then((data) => {
+        console.log("success");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     // fetch(
-    //   "https://api.telegram.org/bot1850553902:AAENsSOkHmpnFTrIDu95srKWyEgLgM1dMiM/sendMessage?chat_id=427833035&text=You%20have%20a%20new%20visitor!"
+    //   ""
     // );
   }, []);
 
