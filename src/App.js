@@ -2,9 +2,12 @@ import "./App.css";
 import profilepic from "./images/arun.png";
 import ProjectCard from "./Components/ProjectCard";
 import React, { useState, useEffect } from "react";
-import { data } from "./Components/projectData";
+// import { data } from "./Components/projectData";
 import { motion } from "framer-motion";
 function App() {
+  const [data, setProjectData] = useState([]);
+  const [bio, setBio] = useState("");
+  const [skills, setSkills] = useState([]);
   const [dark, setDark] = useState(true);
   const toggleDarkMode = () => {
     if (!dark) {
@@ -18,9 +21,23 @@ function App() {
     }
   };
   useEffect(() => {
+    fetch(process.env.REACT_APP_STATIC_DATA)
+      .then((res) => {
+        res.json().then((data) => {
+          setProjectData(data.projectData);
+          setBio(data.bio);
+          setSkills(data.skills);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
     if (typeof window !== "undefined") {
       if (
-        window.sessionStorage.theme == "dark" ||
+        window.sessionStorage.theme === "dark" ||
         (!window.sessionStorage.theme &&
           window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
@@ -31,17 +48,9 @@ function App() {
         setDark(false);
       }
     }
-    console.log(process.env.REACT_APP_URL);
     fetch(process.env.REACT_APP_URL)
-      .then((data) => {
-        console.log("success");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    // fetch(
-    //   ""
-    // );
+      .then((data) => {})
+      .catch((err) => {});
   }, []);
 
   return (
@@ -68,7 +77,7 @@ function App() {
         <div className="flex justify-start -mr-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8 mr-4 text-primary text-opacity-80"
+            className="h-12 w-12 mr-4 text-primary text-opacity-80 hover: cursor-pointer"
             viewBox="0 0 20 20"
             fill="currentColor"
             onClick={toggleDarkMode}
@@ -90,20 +99,15 @@ function App() {
             Arun <p className="text-primary inline-block">Kumar B</p>
           </span>
         </div>
-        <p className="aboutparagraph whitedark">
-          Hie ! I am a Web Developer passionate about Software technologies. I
-          spend most of my free time to see what new frameworks do and
-          experiment with them. I am an Intermediate skilled developer who knows
-          from coding an app to deploying it to cloud platforms.
-        </p>
+        <p className="aboutparagraph whitedark">{bio}</p>
         <div className="jsfont m-2 mt-4">
           <span className="headings">Skills</span>
           <div className="font-light text-2xl flex flex-wrap gap-3 whitedark">
-            <span className="">Python3</span>
-            <span className="">NodeJS</span>
-            <span className="">ReactJS</span>
-            <span className="">RestAPI </span>
-            <span className="">MongoDB</span>
+            {skills?.map((skill) => (
+              <span className="" key={skill}>
+                {skill}
+              </span>
+            ))}
           </div>
         </div>
         <div className="mt-4 p-2">
@@ -116,7 +120,7 @@ function App() {
 
         <div className="m-2 projects_div">
           <span className="text-primary font-bold text-3xl font-JosefinSans mt-6">
-            Projects Interests
+            Projects && Interests
           </span>
           <div className="md:grid md:grid-cols-2 gap-2 mt-2">
             {/* <ProjectCard
