@@ -48,9 +48,9 @@ function App() {
         setDark(false);
       }
     }
-    fetch(process.env.REACT_APP_URL)
-      .then((data) => {})
-      .catch((err) => {});
+    // fetch(process.env.REACT_APP_URL)
+    //   .then((data) => {})
+    //   .catch((err) => {});
     const url = "https://api.ipify.org/?format=json";
     function ping() {
       fetch(url)
@@ -58,14 +58,14 @@ function App() {
           // fetch(url).then((res) => {
           console.log(res);
 
-          res.json().then((data) => {
+          res.json().then(async (data) => {
             let message = "You have a new visitor : ";
             console.log(data);
             for (const [key, value] of Object.entries(data)) {
               message += `${key}-${value}%0A`;
             }
-            console.log(message);
-            fetch(process.env.REACT_APP_URL + message)
+            // console.log(message);
+            await fetch(`${process.env.REACT_APP_URL}${message}`)
               .then((data) => {})
               .catch((err) => {});
           });
