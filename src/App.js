@@ -51,15 +51,15 @@ function App() {
     fetch(process.env.REACT_APP_URL)
       .then((data) => {})
       .catch((err) => {});
-    // const url = "https://api.ipify.org/?format=json";
+    const url = "https://api.ipify.org/?format=json";
     function ping() {
-      fetch("http://ip-api.com/json")
+      fetch(url)
         .then((res) => {
           // fetch(url).then((res) => {
           console.log(res);
 
           res.json().then((data) => {
-            let message = "";
+            let message = "You have a new visitor : ";
             console.log(data);
             for (const [key, value] of Object.entries(data)) {
               message += `${key}-${value}%0A`;
@@ -72,7 +72,7 @@ function App() {
         })
         .catch((err) => console.log(""));
     }
-    // ping();
+    ping();
   }, []);
 
   return (
