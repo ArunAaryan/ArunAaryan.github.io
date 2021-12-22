@@ -48,9 +48,31 @@ function App() {
         setDark(false);
       }
     }
-    fetch(process.env.REACT_APP_URL)
-      .then((data) => {})
-      .catch((err) => {});
+    // fetch(process.env.REACT_APP_URL)
+    //   .then((data) => {})
+    //   .catch((err) => {});
+    // const url = "https://api.ipify.org/?format=json";
+    function ping() {
+      fetch("http://ip-api.com/json")
+        .then((res) => {
+          // fetch(url).then((res) => {
+          console.log(res);
+
+          res.json().then((data) => {
+            let message = "";
+            console.log(data);
+            for (const [key, value] of Object.entries(data)) {
+              message += `${key}-${value}%0A`;
+            }
+            console.log(message);
+            fetch(process.env.REACT_APP_URL + message)
+              .then((data) => {})
+              .catch((err) => {});
+          });
+        })
+        .catch((err) => console.log(""));
+    }
+    ping();
   }, []);
 
   return (
