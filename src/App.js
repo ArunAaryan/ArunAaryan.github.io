@@ -48,9 +48,9 @@ function App() {
         setDark(false);
       }
     }
-    // fetch(process.env.REACT_APP_URL)
-    //   .then((data) => {})
-    //   .catch((err) => {});
+    fetch(process.env.REACT_APP_URL)
+      .then((data) => {})
+      .catch((err) => {});
     // const url = "https://api.ipify.org/?format=json";
     function ping() {
       fetch("http://ip-api.com/json")
@@ -72,7 +72,7 @@ function App() {
         })
         .catch((err) => console.log(""));
     }
-    ping();
+    // ping();
   }, []);
 
   return (
